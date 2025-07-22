@@ -1,31 +1,46 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Suspense } from "react";
-import { FaSpinner } from "react-icons/fa";
-import LandingPage from "../../components/LandingPage/LandingPage";
-import Dashboard from "../../components/UserDashboard/UserDashboard";
-import AdminPanel from "../../components/AdminPanel/AdminPanel";
-import Support from "../../components/Support/Support";
-import styles from "./Home.module.css";
+import React from "react";
+import styles from "../styles/home.module.css";
+
+import QuickAccess from "../components/QuickAccess/QuickAccess";
+import PlanCard from "../components/PlanCard/PlanCard";
+import VoucherSection from "../components/VoucherSection/VoucherSection";
+import RecentPurchases from "../components/RecentPurchases/RecentPurchases";
 
 const Home: React.FC = () => {
   return (
     <div className={styles.container}>
-      <Router>
-        <Suspense
-          fallback={
-            <div className={styles.spinnerWrapper}>
-              <FaSpinner className={styles.spinner} />
-            </div>
-          }
-        >
-          <Routes>
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/admin/*" element={<AdminPanel />} />
-            <Route path="/support" element={<Support />} />
-          </Routes>
-        </Suspense>
-      </Router>
+      <QuickAccess />
+
+      <div className={styles.planSection}>
+        <h2>Plans</h2>
+        <div className={styles.planGrid}>
+          <PlanCard
+            title="3 HOURS UNLIMITED"
+            price="KES 10"
+            device="1 Device"
+          />
+          <PlanCard
+            title="6 HOURS UNLIMITED"
+            price="KES 20"
+            device="1 Device"
+          />
+          <PlanCard
+            title="12 HOURS UNLIMITED"
+            price="KES 30"
+            device="1 Device"
+          />
+          <PlanCard
+            title="Game Streaming 3H"
+            price="KES 30"
+            device="1 Device"
+          />
+          <PlanCard title="6H VIP FAST" price="KES 40" device="1 Device" />
+          <PlanCard title="12H VIP FAST" price="KES 60" device="1 Device" />
+        </div>
+      </div>
+
+      <VoucherSection />
+      <RecentPurchases />
     </div>
   );
 };
