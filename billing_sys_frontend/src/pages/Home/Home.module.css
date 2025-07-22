@@ -1,28 +1,15 @@
 .container {
-  min-height: 100vh;
-  background: #f5f5f5;
-  font-family: "Poppins", sans-serif;
+  padding: 1rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f7f9fc;
 }
 
-.spinnerWrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background: #f5f5f5;
+.planSection {
+  margin-top: 2rem;
 }
 
-.spinner {
-  font-size: 50px;
-  color: #007bff;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.planGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
 }

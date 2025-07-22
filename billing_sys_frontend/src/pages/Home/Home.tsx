@@ -1,10 +1,10 @@
 import React from "react";
-import styles from "../styles/home.module.css";
+import styles from "./Home.module.css";
 
-import QuickAccess from "../components/QuickAccess/QuickAccess";
-import PlanCard from "../components/PlanCard/PlanCard";
-import VoucherSection from "../components/VoucherSection/VoucherSection";
-import RecentPurchases from "../components/RecentPurchases/RecentPurchases";
+import QuickAccess from "../../components/QuickAccess/QuickAccess";
+import PlanCard from "../../components/PlanCard/PlanCard";
+import VoucherSection from "../../components/VoucherSection/VoucherSection";
+import RecentPurchases from "../../components/RecentPurchases/RecentPurchases";
 
 const Home: React.FC = () => {
   return (
