@@ -7,9 +7,17 @@
 .planSection {
   margin-top: 2rem;
 }
-
+.planSection h2 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #003f88;
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+  }
+}
 .planGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
