@@ -1,0 +1,58 @@
+.instructions {
+  padding-right: 1rem;
+  margin-top: 1rem;
+  background: #fff;
+  color: #777;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  animation: slideUp 0.5s ease-out;
+  min-width: 1260px;
+  min-height: 240px;
+  @media (max-width: 768px) {
+    min-width: auto;
+    min-height: 250px;
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
+.instructions div {
+  margin-top: -20px;
+  margin-right: -1rem;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  text-align: center;
+  color: #143692;
+  background-color: #ffa600;
+}
+
+.checkList {
+  list-style: none; /* remove default numbers/bullets */
+  padding-left: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.checkList li {
+  padding-left: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkIcon {
+  color: #143692;
+  flex-shrink: 0;
+  font-size: 1rem;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

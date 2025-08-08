@@ -1,23 +1,36 @@
 .container {
-  padding: 1rem;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f7f9fc;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: "Roboto", sans-serif;
+  background: linear-gradient(135deg, #162b67, #3c699f);
+  color: #ffffff;
 }
 
-.planSection {
-  margin-top: 2rem;
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 40px;
+  max-width: 100%;
+  margin: 0 auto;
+  animation: fadeIn 0.5s ease-in;
 }
-.planSection h2 {
-  font-size: 1.8rem;
-  font-weight: 500;
-  color: #003f88;
-  @media (max-width: 768px) {
-    font-size: 1.3rem;
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
-.planGrid {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: center;
+
+@media (max-width: 768px) {
+  .main {
+    padding: 0px;
+    padding-top: 1rem;
+    gap: 20px;
+  }
 }
