@@ -10,7 +10,7 @@
 
 .plansSection h2 {
   color: #ffa600;
-  font-size: 24px;
+  font-size: 1.2rem;
   margin-bottom: 20px;
   text-align: center;
 }
@@ -63,10 +63,6 @@
   .plansSection {
     padding: 15px;
     margin-top: -70px;
-  }
-
-  .plansSection h2 {
-    font-size: 20px;
   }
 
   .tabs {
