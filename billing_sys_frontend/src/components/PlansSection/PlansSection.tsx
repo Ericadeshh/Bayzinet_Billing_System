@@ -80,7 +80,7 @@ const plans: Plan[] = [
   {
     id: 9,
     name: "MONTHLY UNLIMITED",
-    price: 500,
+    price: 750,
     duration: "30 Days",
     devices: "1 Device",
     category: "Monthly",

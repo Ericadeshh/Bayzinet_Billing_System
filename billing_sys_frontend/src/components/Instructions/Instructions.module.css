@@ -22,9 +22,9 @@
   font-size: 1.2rem;
   margin-bottom: 15px;
   text-align: center;
-  color: #143692;
+  color: #263a73;
   font-weight: 600;
-  background-color: #ffd54f;
+  background-color: #ffa600;
 }
 
 .checkList {
@@ -42,7 +42,7 @@
 }
 
 .checkIcon {
-  color: #143692;
+  color: #263a73;
   flex-shrink: 0;
   font-size: 1rem;
 }

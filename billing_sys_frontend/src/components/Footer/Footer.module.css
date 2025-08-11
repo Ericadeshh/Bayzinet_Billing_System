@@ -9,6 +9,18 @@
   font-size: 14px;
   opacity: 0.8;
 }
+.tm {
+  color: #ffa600;
+  font-size: 1rem;
+}
+.email {
+  color: #ffa600;
+  text-decoration: none;
+}
+
+.email:hover {
+  text-decoration: underline;
+}
 
 @media (max-width: 768px) {
   .footer {

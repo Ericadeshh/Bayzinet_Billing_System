@@ -1,4 +1,6 @@
 .purchases {
+  min-width: 900px;
+  margin: 0 auto;
   background: rgba(255, 255, 255, 0);
   padding: 20px;
   border-radius: 10px;
@@ -7,7 +9,7 @@
 }
 
 .purchases h2 {
-  color: #ffd54f;
+  color: #fff;
   font-size: 1.2rem;
   margin-bottom: 20px;
   text-align: center;
@@ -26,12 +28,66 @@
 }
 
 .table th {
+  color: #ffa600;
   font-size: 16px;
   font-weight: bold;
 }
 
 .table td {
   font-size: 14px;
+  color: #ffffff;
+}
+
+.code {
+  color: #ffa600;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.statusActive {
+  color: #4caf50;
+}
+
+.statusPending {
+  color: #ffa600;
+}
+
+.statusExpired {
+  color: #ff4d4f;
+}
+
+.iconActive {
+  color: #4caf50;
+  font-size: 16px;
+  transition: transform 0.3s ease;
+}
+
+.iconActive:hover {
+  transform: scale(1.2);
+}
+
+.iconPending {
+  color: #ffa600;
+  font-size: 16px;
+  transition: transform 0.3s ease;
+}
+
+.iconPending:hover {
+  transform: scale(1.2);
+}
+
+.iconExpired {
+  color: #ff4d4f;
+  font-size: 16px;
+  transition: transform 0.3s ease;
+}
+
+.iconExpired:hover {
+  transform: scale(1.2);
 }
 
 @keyframes slideUp {
@@ -48,6 +104,8 @@
 @media (max-width: 768px) {
   .purchases {
     padding: 15px;
+    min-width: auto;
+    width: 100%;
   }
 
   .purchases h2 {
@@ -58,5 +116,11 @@
   .table td {
     font-size: 12px;
     padding: 8px;
+  }
+
+  .iconActive,
+  .iconPending,
+  .iconExpired {
+    font-size: 14px;
   }
 }
