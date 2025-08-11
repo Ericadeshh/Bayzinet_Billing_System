@@ -6,6 +6,7 @@ import PlansSection from "../../components/PlansSection/PlansSection";
 import ConnectForm from "../../components/ConnectForm/ConnectForm";
 import RecentPurchases from "../../components/RecentPurchases/RecentPurchases";
 import Footer from "../../components/Footer/Footer";
+import ScrollToTop from "../../components/ScrollToTop/ScrollToTop";
 
 const Home: React.FC = () => {
   return (
@@ -18,6 +19,7 @@ const Home: React.FC = () => {
         <RecentPurchases />
       </main>
       <Footer />
+      <ScrollToTop />
     </div>
   );
 };
