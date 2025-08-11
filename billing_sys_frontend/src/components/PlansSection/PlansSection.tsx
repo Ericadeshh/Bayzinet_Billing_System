@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { MdOutlineMobiledataOff } from "react-icons/md";
+import { TbMobiledata } from "react-icons/tb";
 import styles from "./PlansSection.module.css";
 import PlanCard from "../PlanCard/PlanCard";
 
@@ -95,7 +95,7 @@ const PlansSection: React.FC = () => {
   return (
     <section className={styles.plansSection}>
       <h2>
-        Data Plans <MdOutlineMobiledataOff />
+        Data Plans <TbMobiledata />
       </h2>
       <div className={styles.tabs}>
         {categories.map((category) => (
