@@ -55,6 +55,7 @@
   border-radius: 5px;
   background: #263a73;
   color: #ffffff;
+  font-weight: 500;
   cursor: pointer;
   transition: background 0.3s;
   width: 80px;

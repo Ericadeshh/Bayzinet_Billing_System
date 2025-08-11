@@ -84,6 +84,7 @@
   border: none;
   border-radius: 5px;
   background: #263a73;
+  font-weight: 500;
   color: #ffffff;
   cursor: pointer;
   transition: background 0.3s, color 0.3s;
