@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { TbMobiledata } from "react-icons/tb";
 import styles from "./PlansSection.module.css";
 import PlanCard from "../PlanCard/PlanCard";
@@ -12,85 +12,28 @@ interface Plan {
   category: string;
 }
 
-const plans: Plan[] = [
-  {
-    id: 1,
-    name: "3 HOURS UNLIMITED",
-    price: 10,
-    duration: "3 Hours",
-    devices: "1 Device",
-    category: "Hourly",
-  },
-  {
-    id: 2,
-    name: "6 HOURS UNLIMITED",
-    price: 20,
-    duration: "6 Hours",
-    devices: "1 Device",
-    category: "Hourly",
-  },
-  {
-    id: 3,
-    name: "12 HOURS UNLIMITED",
-    price: 30,
-    duration: "12 Hours",
-    devices: "1 Device",
-    category: "Hourly",
-  },
-  {
-    id: 4,
-    name: "Game Streaming 3 Hours",
-    price: 30,
-    duration: "3 Hours",
-    devices: "1 Device",
-    category: "Hourly",
-  },
-  {
-    id: 5,
-    name: "6 HOURS VIP FAST SPEED",
-    price: 40,
-    duration: "6 Hours",
-    devices: "1 Device",
-    category: "Hourly",
-  },
-  {
-    id: 6,
-    name: "12 HOURS VIP FAST SPEED",
-    price: 60,
-    duration: "12 Hours",
-    devices: "1 Device",
-    category: "Hourly",
-  },
-  {
-    id: 7,
-    name: "DAILY UNLIMITED",
-    price: 50,
-    duration: "24 Hours",
-    devices: "1 Device",
-    category: "Daily",
-  },
-  {
-    id: 8,
-    name: "WEEKLY UNLIMITED",
-    price: 200,
-    duration: "7 Days",
-    devices: "1 Device",
-    category: "Weekly",
-  },
-  {
-    id: 9,
-    name: "MONTHLY UNLIMITED",
-    price: 750,
-    duration: "30 Days",
-    devices: "1 Device",
-    category: "Monthly",
-  },
-];
-
 const PlansSection: React.FC = () => {
+  const [plans, setPlans] = useState<Plan[]>([]);
   const [activeTab, setActiveTab] = useState("Hourly");
-
   const categories = ["Hourly", "Daily", "Weekly", "Monthly"];
+
+  useEffect(() => {
+    const fetchPlans = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/plans");
+        if (!response.ok) throw new Error("Failed to fetch plans");
+        const { data } = await response.json();
+        setPlans(data);
+      } catch (error) {
+        if (error instanceof Error) {
+          console.error("❌ Error fetching plans:", error.message);
+        } else {
+          console.error("❌ Error fetching plans:", error);
+        }
+      }
+    };
+    fetchPlans();
+  }, []);
 
   return (
     <section className={styles.plansSection}>
@@ -111,17 +54,21 @@ const PlansSection: React.FC = () => {
         ))}
       </div>
       <div className={styles.plansGrid}>
-        {plans
-          .filter((plan) => plan.category === activeTab)
-          .map((plan) => (
-            <PlanCard
-              key={plan.id}
-              name={plan.name}
-              price={plan.price}
-              duration={plan.duration}
-              devices={plan.devices}
-            />
-          ))}
+        {plans.length > 0 ? (
+          plans
+            .filter((plan) => plan.category === activeTab)
+            .map((plan) => (
+              <PlanCard
+                key={plan.id}
+                name={plan.name}
+                price={plan.price}
+                duration={plan.duration}
+                devices={plan.devices}
+              />
+            ))
+        ) : (
+          <p>Loading plans...</p>
+        )}
       </div>
     </section>
   );

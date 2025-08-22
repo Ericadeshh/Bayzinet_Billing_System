@@ -38,9 +38,7 @@ Plan.init(
     price: {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: false,
-      validate: {
-        min: 0,
-      },
+      validate: { min: 0 },
     },
     duration: {
       type: DataTypes.STRING(50),
@@ -59,15 +57,7 @@ Plan.init(
     sequelize,
     tableName: "plans",
     timestamps: true,
-    indexes: [
-      {
-        unique: true,
-        fields: ["name"],
-      },
-      {
-        fields: ["category"],
-      },
-    ],
+    indexes: [{ unique: true, fields: ["name"] }, { fields: ["category"] }],
   }
 );
 

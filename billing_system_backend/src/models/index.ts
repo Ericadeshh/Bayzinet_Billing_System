@@ -3,7 +3,6 @@ import Plan from "./plan_model";
 import Purchase from "./purchase_model";
 import Voucher from "./voucher_model";
 
-// Define associations
 User.hasMany(Purchase, { foreignKey: "userId", onDelete: "CASCADE" });
 Purchase.belongsTo(User, { foreignKey: "userId" });
 

@@ -6,6 +6,7 @@ interface UserAttributes {
   username: string;
   password: string;
   email?: string;
+  role: "user" | "admin";
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -15,6 +16,7 @@ class User extends Model<UserAttributes> implements UserAttributes {
   public username!: string;
   public password!: string;
   public email?: string;
+  public role!: "user" | "admin";
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
 }
@@ -30,9 +32,7 @@ User.init(
       type: DataTypes.STRING(50),
       allowNull: false,
       unique: true,
-      validate: {
-        len: [3, 50],
-      },
+      validate: { len: [3, 50] },
     },
     password: {
       type: DataTypes.STRING(255),
@@ -42,9 +42,12 @@ User.init(
       type: DataTypes.STRING(100),
       allowNull: true,
       unique: true,
-      validate: {
-        isEmail: true,
-      },
+      validate: { isEmail: true },
+    },
+    role: {
+      type: DataTypes.ENUM("user", "admin"),
+      allowNull: false,
+      defaultValue: "user",
     },
   },
   {
@@ -52,14 +55,8 @@ User.init(
     tableName: "users",
     timestamps: true,
     indexes: [
-      {
-        unique: true,
-        fields: ["username"],
-      },
-      {
-        unique: true,
-        fields: ["email"],
-      },
+      { unique: true, fields: ["username"] },
+      { unique: true, fields: ["email"] },
     ],
   }
 );

@@ -35,29 +35,21 @@ Purchase.init(
     userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: {
-        model: User,
-        key: "id",
-      },
+      references: { model: User, key: "id" },
       onDelete: "CASCADE",
       onUpdate: "CASCADE",
     },
     planId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: {
-        model: Plan,
-        key: "id",
-      },
+      references: { model: Plan, key: "id" },
       onDelete: "RESTRICT",
       onUpdate: "CASCADE",
     },
     amount: {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: false,
-      validate: {
-        min: 0,
-      },
+      validate: { min: 0 },
     },
     transactionCode: {
       type: DataTypes.STRING(50),
@@ -80,19 +72,10 @@ Purchase.init(
     timestamps: true,
     updatedAt: false,
     indexes: [
-      {
-        unique: true,
-        fields: ["transactionCode"],
-      },
-      {
-        fields: ["userId"],
-      },
-      {
-        fields: ["planId"],
-      },
-      {
-        fields: ["status"],
-      },
+      { unique: true, fields: ["transactionCode"] },
+      { fields: ["userId"] },
+      { fields: ["planId"] },
+      { fields: ["status"] },
     ],
   }
 );

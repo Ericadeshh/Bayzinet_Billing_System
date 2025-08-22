@@ -35,10 +35,7 @@ Voucher.init(
     userId: {
       type: DataTypes.INTEGER,
       allowNull: true,
-      references: {
-        model: User,
-        key: "id",
-      },
+      references: { model: User, key: "id" },
       onDelete: "SET NULL",
       onUpdate: "CASCADE",
     },
@@ -58,16 +55,9 @@ Voucher.init(
     timestamps: true,
     updatedAt: false,
     indexes: [
-      {
-        unique: true,
-        fields: ["code"],
-      },
-      {
-        fields: ["userId"],
-      },
-      {
-        fields: ["status"],
-      },
+      { unique: true, fields: ["code"] },
+      { fields: ["userId"] },
+      { fields: ["status"] },
     ],
   }
 );
