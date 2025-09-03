@@ -1,8 +1,12 @@
 import { Router } from "express";
-import { initiatePayment } from "../controllers/payment_controller";
+import {
+  initiatePayment,
+  handleMpesaCallback,
+} from "../controllers/payment_controller";
 
 const router = Router();
 
 router.post("/purchase", initiatePayment);
+router.post("/mpesa/callback", handleMpesaCallback);
 
 export default router;

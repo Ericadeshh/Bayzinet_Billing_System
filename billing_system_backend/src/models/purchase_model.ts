@@ -9,9 +9,10 @@ interface PurchaseAttributes {
   planId: number;
   amount: number;
   transactionCode: string;
-  status: "Active" | "Pending" | "Expired";
+  status: "Pending" | "Active" | "Expired";
+  expiresAt: Date;
   createdAt?: Date;
-  expiresAt?: Date;
+  updatedAt?: Date;
 }
 
 class Purchase extends Model<PurchaseAttributes> implements PurchaseAttributes {
@@ -20,9 +21,10 @@ class Purchase extends Model<PurchaseAttributes> implements PurchaseAttributes {
   public planId!: number;
   public amount!: number;
   public transactionCode!: string;
-  public status!: "Active" | "Pending" | "Expired";
+  public status!: "Pending" | "Active" | "Expired";
+  public expiresAt!: Date;
   public readonly createdAt!: Date;
-  public expiresAt?: Date;
+  public readonly updatedAt!: Date;
 }
 
 Purchase.init(
@@ -36,48 +38,38 @@ Purchase.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: { model: User, key: "id" },
-      onDelete: "CASCADE",
-      onUpdate: "CASCADE",
     },
     planId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: { model: Plan, key: "id" },
-      onDelete: "RESTRICT",
-      onUpdate: "CASCADE",
     },
     amount: {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: false,
-      validate: { min: 0 },
     },
     transactionCode: {
       type: DataTypes.STRING(50),
       allowNull: false,
-      unique: true,
     },
     status: {
-      type: DataTypes.ENUM("Active", "Pending", "Expired"),
+      type: DataTypes.ENUM("Pending", "Active", "Expired"),
       allowNull: false,
       defaultValue: "Pending",
     },
     expiresAt: {
       type: DataTypes.DATE,
-      allowNull: true,
+      allowNull: false,
     },
   },
   {
     sequelize,
     tableName: "purchases",
     timestamps: true,
-    updatedAt: false,
-    indexes: [
-      { unique: true, fields: ["transactionCode"] },
-      { fields: ["userId"] },
-      { fields: ["planId"] },
-      { fields: ["status"] },
-    ],
   }
 );
+
+Purchase.belongsTo(User, { foreignKey: "userId" });
+Purchase.belongsTo(Plan, { foreignKey: "planId" });
 
 export default Purchase;

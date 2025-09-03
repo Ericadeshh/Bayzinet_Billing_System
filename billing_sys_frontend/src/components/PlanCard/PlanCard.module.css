@@ -1,9 +1,7 @@
 .card {
   background: #ffffff;
-
   backdrop-filter: blur(150px);
   animation: slideUp 0.5s ease-out;
-
   padding: 1rem;
   border-radius: 10px;
   text-align: center;
@@ -13,7 +11,10 @@
   align-items: center;
   justify-content: space-between;
   min-width: 300px;
-  @media (max-width: 768px) {
+}
+
+@media (max-width: 768px) {
+  .card {
     min-width: 100%;
   }
 }
@@ -42,12 +43,14 @@
   opacity: 0.8;
   margin-bottom: -5px;
 }
+
 .devices {
   font-size: 0.8rem;
   margin-bottom: -5px;
   color: #0b1a45;
   text-align: left;
 }
+
 .button {
   font-size: 0.9rem;
   padding: 10px;
@@ -66,4 +69,53 @@
   background: #ffa600;
   color: #263a73;
   font-weight: 600;
+}
+
+.button.loading {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+.message {
+  font-size: 0.8rem;
+  margin-top: 10px;
+  animation: slideUp 0.3s ease-out;
+}
+
+.success {
+  color: #28a745;
+  animation: slideUp 0.5s ease-out;
+}
+
+.error {
+  color: #ff4d4f;
+  animation: shake 0.3s ease-in-out;
+}
+
+.icon {
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
 }

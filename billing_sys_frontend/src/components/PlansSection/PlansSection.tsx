@@ -14,6 +14,7 @@ interface Plan {
 
 const PlansSection: React.FC = () => {
   const [plans, setPlans] = useState<Plan[]>([]);
+  const [error, setError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState("Hourly");
   const categories = ["Hourly", "Daily", "Weekly", "Monthly"];
 
@@ -21,15 +22,18 @@ const PlansSection: React.FC = () => {
     const fetchPlans = async () => {
       try {
         const response = await fetch("http://localhost:5000/api/plans");
-        if (!response.ok) throw new Error("Failed to fetch plans");
+        if (!response.ok)
+          throw new Error(`Failed to fetch plans: ${response.status}`);
         const { data } = await response.json();
         setPlans(data);
+        setError(null);
       } catch (error) {
         if (error instanceof Error) {
           console.error("❌ Error fetching plans:", error.message);
         } else {
           console.error("❌ Error fetching plans:", error);
         }
+        setError("Unable to load plans. Please try again later.");
       }
     };
     fetchPlans();
@@ -54,12 +58,15 @@ const PlansSection: React.FC = () => {
         ))}
       </div>
       <div className={styles.plansGrid}>
-        {plans.length > 0 ? (
+        {error ? (
+          <p className={styles.error}>{error}</p>
+        ) : plans.length > 0 ? (
           plans
             .filter((plan) => plan.category === activeTab)
             .map((plan) => (
               <PlanCard
                 key={plan.id}
+                id={plan.id} // Added id prop
                 name={plan.name}
                 price={plan.price}
                 duration={plan.duration}
