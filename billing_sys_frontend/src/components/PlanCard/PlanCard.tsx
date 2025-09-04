@@ -89,8 +89,30 @@ const PlanCard: React.FC<PlanCardProps> = ({
       }
     } catch (error) {
       let errorMessage = "Error connecting to server.";
-      if (axios.isAxiosError(error) && error.response?.data?.message) {
-        errorMessage = error.response.data.message;
+
+      // Define a type guard for AxiosError
+      type AxiosErrorResponse = {
+        response?: {
+          data?: {
+            message?: string;
+          };
+        };
+      };
+
+      const err = error as AxiosErrorResponse;
+
+      if (
+        typeof error === "object" &&
+        error !== null &&
+        "response" in error &&
+        typeof err.response === "object" &&
+        err.response !== null &&
+        "data" in err.response &&
+        typeof err.response.data === "object" &&
+        err.response.data !== null &&
+        "message" in err.response.data
+      ) {
+        errorMessage = err.response.data.message as string;
       }
       setIsSuccess(false);
       setMessage(errorMessage);

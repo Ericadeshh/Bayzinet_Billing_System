@@ -87,8 +87,8 @@ export const initiateMpesaPayment = async (
     return response.data;
   } catch (error) {
     let errorMessage = "Unknown error";
-    if (axios.isAxiosError(error) && error.response?.data?.errorMessage) {
-      errorMessage = error.response.data.errorMessage;
+    if (axios.isAxiosError(error)) {
+      errorMessage = error.response?.data?.errorMessage || error.message;
     } else if (error instanceof Error) {
       errorMessage = error.message;
     }

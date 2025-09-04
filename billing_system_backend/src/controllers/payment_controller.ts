@@ -63,8 +63,8 @@ export const initiatePayment = async (req: Request, res: Response) => {
     });
   } catch (error) {
     const errorMessage =
-      typeof error === "object" && error !== null && "message" in error
-        ? (error as { message?: string }).message || "Payment initiation failed"
+      error && typeof error === "object" && "message" in error
+        ? (error as { message: string }).message
         : "Payment initiation failed";
     console.error("❌ Payment initiation failed:", errorMessage);
     res.status(500).json({ success: false, message: errorMessage });
@@ -98,12 +98,10 @@ export const handleMpesaCallback = async (req: Request, res: Response) => {
     res.status(200).json({ success: true, message: "Callback processed" });
   } catch (error) {
     const errorMessage =
-      typeof error === "object" && error !== null && "message" in error
-        ? (error as { message?: string }).message
-        : String(error);
+      error && typeof error === "object" && "message" in error
+        ? (error as { message: string }).message
+        : "Callback processing failed";
     console.error("❌ M-Pesa callback failed:", errorMessage);
-    res
-      .status(500)
-      .json({ success: false, message: "Callback processing failed" });
+    res.status(500).json({ success: false, message: errorMessage });
   }
 };
