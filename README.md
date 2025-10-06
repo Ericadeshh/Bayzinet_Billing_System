@@ -1,6 +1,6 @@
 # Bayzinet_Billing_System
 
-A web application built with **React**, **TypeScript**, and **Vite**, deployed via Netlify.  
+A web application built with **React**, **TypeScript**, **Node+ExpressJs**, **MySQL**, **MPESA API** and **Vite**, deployed via Netlify.  
 This project — *BayziNetX* — aims to provide a robust Internet Billing System for Hotspot and PPPOE networks.
 
 
